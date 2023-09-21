@@ -1,0 +1,731 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #F5F5F5;
+}
+
+
+.tableau-de-bord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #65C0FF;
+    color: white;
+}
+
+.logo img {
+    width: 50px;
+}
+
+/* menu */
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+/* boutons */
+.boutons button {
+    background-color: #65C0FF;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.boutons button:hover {
+    background-color: #65bfff75;
+}
+
+
+/*  carrés */
+.carre {
+    width: 23%;
+    height: 100px;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.texte-carre {
+    position: absolute;
+    bottom: 10px;
+    left: 10px; 
+    right: 10px; 
+}
+
+.texte-carre h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.texte-carre p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* superposition de texte */
+.superposition-texte {
+    text-align: center;
+}
+
+.superposition-texte h3 {
+    color: white;
+    font-size: 18px;
+    margin-top: 230px;
+}
+
+.bouton-commencer {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #007BFF;
+    cursor: pointer;
+    margin-top: 30px; 
+}
+.bouton-commencer:hover {
+    background-color: #65bfff75;
+}
+.section-accueil {
+    position: relative;
+}
+
+.section-accueil img {
+    width: 100%;
+    height: auto;
+}
+
+.section-accueil img {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.superposition-texte {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.superposition-texte h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.bouton-commencer {
+    background-color: #65C0FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.bouton-commencer:hover {
+    background-color: #65bfff75;
+}
+
+/* A propos 1*/
+
+.contenu-accueil {
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #65C0FF;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+}
+.texte-box p span{
+    color: #65C0FF;
+}
+.contenu-texte {
+    margin-top: 20px;
+    max-width: 100%;
+}
+.texte-box{
+    background: white;
+    margin: 1px;
+    width: 100%;
+    border-radius: 10px;
+    height: 160px;
+}
+.texte-box p {
+    font-size: 16px;
+    color: #777777;
+}
+
+.contenu-accueil button.bouton-commencer {
+    background-color: #65C0FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.contenu-accueil button.bouton-commencer:hover {
+    background-color: #65bfff75;
+}
+
+/* A propos2 */
+.apropos{
+    position: relative;
+    background: #65C0FF;
+    margin-top: 150px;
+    width: 100%;
+    height: 400px;
+    border-radius: 100px 0  100px 0;
+}
+
+.apropos{
+    position: relative;
+    background-color: #65C0FF;
+    width: auto;
+    height: 450px;
+    text-align: center;
+    padding: 10px;
+}
+.image{
+    max-width: 100%;
+    height: auto;
+}
+.img_apropos{
+    position: relative;
+    height: 200px;
+    width: 300px;
+    align-items: center;
+    justify-content: center
+}
+.description-sous{
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+.image-sous-div{
+    max-width: 33%;
+    height: auto;
+}
+.div-image-horizontales{
+    display: flex;
+    justify-content: space-around;
+}
+.description{
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+.div_sous_droite{
+    width: 30%;
+}
+.div_sous_gauche{
+    width: 30%;
+}
+.savoir_plus{
+    position: absolute;
+    background: white;
+    border: 1px solid white;
+    padding: 9px;
+    margin: 20px;
+    border-radius: 0 5px 0 5px;
+    margin-left: 35.5%;
+}
+.savoir_plus a{
+    color: #65C0FF;
+    text-decoration: none;
+}
+
+/* div cours */
+.grande-div-cours{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div-cours{
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+    box-shadow: 30px;
+    border-radius: 0 0 10px 10px ;
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px rgb(142, 141, 141);
+}
+
+.cours-button{
+    background: white;
+    width: 120px;
+    border: 5px solid #65C0FF;
+}
+.cours-button a{
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+/* temoignages */
+.grande_div_temoignage{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.div_p_temoignage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.p_temoignage{
+    width: 100px;
+    border-radius: 32px;
+    border: 1px solid #777777;
+    padding: 2px;
+    color: #007BFF;
+}
+
+.temoignage-div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.temoignage {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px 15px #DDDDDD;
+    padding: 20px;
+    max-width: 400px;
+    margin: 10px;
+    flex-grow: 1;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.8);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center; 
+}
+
+
+.bouton_next {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/*icônes */
+.bouton_next i {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #007BFF;
+    border: 1px solid;
+    padding: 7px;
+    border-radius: 20px;
+    width: 25px;
+}
+
+.bouton_next i:hover {
+    color: #007BFF;
+}
+.nom_prof_img{
+display: flex;
+color: #777777;
+text-align: justify;
+}
+.nom_prof_img p{
+margin: 3px;
+}
+.temoignage img {
+border: 1px solid;
+border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* contactez-nous */
+.contact-div {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    margin: 0 auto; 
+    height: 300px;
+ 
+}
+
+.contact-info,
+.contact-form {
+    flex: 1;
+    padding: 6px;
+}
+
+.contact-form{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.contact-form h4{
+    color: #007BFF;
+}
+.contact-info {
+    background-color: #007BFF;
+    color: #fff; 
+    text-align: center;
+    border-right: 1px solid #ccc; 
+}
+
+label {
+    display: block;
+    color: rgb(42, 42, 42);
+}
+h4{
+    text-align: center;
+}
+input,
+textarea {
+    width: 60%;
+    height: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+textarea{
+    height: 20px;
+    max-width: 60%;
+    min-width: 60%;
+    max-height: 30px;
+}
+
+.button-envoyer {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+/* footer */
+footer {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px;
+    text-align: center;
+    display: flex; 
+    margin-top: 20px;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+
+.email {
+    display: flex;
+    align-items: center;
+}
+
+.email-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.email-bouton {
+    background-color: #007BFF; 
+    color: #fff; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.footer-logo {
+    display: inline;
+    align-items: center; 
+}
+
+.footer-logo img {
+    width: 40px; 
+    margin-right: 10px;
+}
+
+.footer-logo h3 {
+    font-size: 18px; 
+}
+
+.footer-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline; 
+}
+
+.footer-menu ul li {
+    margin-right: 20px;
+}
+
+.footer-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex; 
+    padding: 20px;
+    align-items: center; 
+}
+
+.social-icons a {
+    color: #fff;
+    margin-right: 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+/* Styles de base pour tous les écrans */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #F5F5F5;
+    color: #333;
+}
+
+/* Styles pour le tableau de bord */
+.tableau-de-bord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #65C0FF;
+    color: white;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.boutons button {
+    background-color: #65C0FF;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.boutons button:hover {
+    background-color: #65bfff75;
+}
+
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Masquer le menu */
+    }
+
+    .boutons {
+        display: none; /* Masquer les boutons de connexion et d'inscription */
+    }
+
+    .tableau-de-bord {
+        flex-direction: column; /* Aligner les éléments verticalement */
+        text-align: center;
+    }
+}
+
+/* Styles pour les écrans de petite taille (téléphones) */
+@media (max-width: 480px) {
+    .menu {
+        display: none; /* Masquer le menu */
+    }
+
+    .boutons {
+        display: none; /* Masquer les boutons de connexion et d'inscription */
+    }
+
+    .tableau-de-bord {
+        flex-direction: column; /* Aligner les éléments verticalement */
+        text-align: center;
+    }
+
+    /* Styles pour la section d'accueil */
+    .section-accueil img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .superposition-texte h3 {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .bouton-commencer {
+        margin-top: 20px;
+        padding: 8px 16px;
+    }
+
+    /* Styles pour le contenu d'accueil */
+    .contenu-accueil {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .texte-box {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .texte-box p {
+        font-size: 14px;
+    }
+
+    /* Styles pour la section "À propos" */
+    .apropos {
+        margin-top: 100px;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .description-sous,
+    .description {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Styles pour les cours */
+    .grande-div-cours {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .div-cours {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    /* Styles pour les témoignages */
+    .grande_div_temoignage {
+        margin-top: 20px;
+    }
+
+    .p_temoignage {
+        width: auto;
+        padding: 4px 10px;
+    }
+
+    .temoignage {
+        display: block;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Styles pour la section de contact */
+    .contact-div {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+    }
+
+    .email-input {
+        border-radius: 5px;
+    }
+
+    .email-bouton {
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+
+/* Styles pour le pied de page (footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.footer-logo h3 {
+    font-size: 14px;
+}
+
+.footer-menu ul {
+    display: none;
+}
+
+.social-icons a {
+    font-size: 20px;
+}

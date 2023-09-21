@@ -1,0 +1,20 @@
+/* styles.css */
+/* ... styles for body and container from previous CSS ... */
+
+h1 {
+    color: #333;
+}
+
+p {
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

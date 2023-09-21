@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <title>Tableau de bord</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Tableau de bord</h1>
+        <p>Bienvenue, {{ utilisateur.nom }} !</p>
+        <p>Solde actuel : {{ utilisateur.solde }} $</p>
+        <h2>Historique des opérations</h2>
+        <ul>
+            {% for operation in historique_operations %}
+                <li>{{ operation.description }} - Montant : {{ operation.montant }} $</li>
+            {% endfor %}
+        </ul>
+        <button id="recharge-button">Recharger</button>
+        <div id="recharge-form" style="display: none;">
+            <!-- Formulaire de rechargement -->
+            <form method="post" action="{{ url_for('recharge') }}">
+                <input type="number" name="montant" placeholder="Montant à recharger">
+                <button type="submit">Recharger</button>
+            </form>
+        </div>
+
+        <a href="{{ url_for('solde') }}">Gérer le solde</a>
+        <a href="{{ url_for('transfert') }}">Effectuer un transfert</a>
+        <a href="{{ url_for('deconnexion') }}">Se déconnecter</a>
+    </div>
+    <script>
+       document.getElementById('recharge-button').addEventListener('click', function () {
+    document.getElementById('recharge-form').style.display = 'block';
+    });
+
+    </script>
+</body>
+</html>
+
+
+
+

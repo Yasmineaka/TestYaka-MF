@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau de bord</title>
+    <link rel="stylesheet" href="../static/accueil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+    <!-- tableau de bord -->
+    <div class="tableau-de-bord">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        </div>
+        
+        <div class="menu">
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">À Propos</a></li>
+            </ul>
+        </div>
+        <div class="boutons">
+            <button><a href="{{url_for(/connexion)}}">Connexion</a></button>
+            <button><a href="{{url_for(/inscription)}}">Inscription</a></button>
+        </div>
+    </div>
+    <section class="section-accueil">
+        <section class="section-accueil">
+            <img src="../img/business-8150776_1280.jpg" alt="Image d'accueil">
+            <div style="background: rgba(0, 0, 0, 0.615); width: 100%; height: 100%;" class="superposition-texte">
+                <h3>Yasmine A une plateforme de micro-épargne en site web permettant aux utilisateurs de créer un compte ou de <br> se connecter à leur compte existant. 
+                <br>  Collectez des informations essentielles pour la création du compte.
+                </h3>
+                <button class="bouton-commencer">Commencer</button>
+            </div>
+        </section>
+    </section>
+    <!-- quelques informations concernant la plateforme -->
+    <div class="contenu-accueil">
+       <p style="color: white;"> Vous trouverez après inscription:</p>
+        <div style="display: flex;" class="contenu-texte">
+            <div class="texte-box">
+                <p><span>Tableau de bord utilisateur :</span> <br>
+                    Un espace personnel pour <br>
+                    chaque utilisateur où ils peuvent <br>
+                    voir leur solde, leurs transactions,<br>
+                    leurs objectifs d'épargne, etc.</p>
+            </div>
+            <div class="texte-box">
+                <p><span>Tableau de bord utilisateur : </span><br>
+                    Page dédiée à la gestion du <br>
+                    compte d'épargne, y compris le  <br>
+                    solde actuel, les taux d'intérêt,  <br>
+                    les mouvements récents, etc. <br>
+                    Possibilité de faire des dépôts ou  <br>
+                    des retraits.</p>
+            </div>
+            <div class="texte-box">
+                <p><span>Tableau de bord utilisateur :</span> <br>
+                    Permet aux utilisateurs de <br>
+                    transférer de l'argent depuis leur <br>
+                    compte bancaire ou d'autres <br>
+                    sources vers leur compte d'épargne. <br>
+                    Page de suivi des transferts pour  <br>
+                    vérifier l'historique des transactions.</p>
+            </div>
+            <div class="texte-box">
+                <p><span>Tableau de bord utilisateur : </span><br>
+                    Des articles, des vidéos ou des <br>
+                    infographies qui fournissent des <br>
+                     informations sur la gestion financière, <br>
+                    l'épargne, les investissements, etc.</p>
+            </div>
+        </div>
+    </div>
+  <!-- A propos de nous -->
+    <div class='apropos'>
+        <section>
+        <img class="img_apropos" src="../img/meeting-5395615_1280.jpg" alt="" class="image">
+        <div class="div-image-horizontales">
+            <div class="div_sous_gauche">
+                <p class="description-sous">La sécurité de votre compte est garantie</p>
+                <img src="../img/business-8150776_1280.jpg" alt="" class="image-sous-div">
+            </div>
+            <p class="description"> Nous sommes Finance Votre Partenaire en Matière <br>
+                de Microfinance <br>
+                Chez Finance, nous croyons en la<br>
+                 transformation des vies par l'accès à des services <br>
+                financiers inclusifs. Depuis notre création, notre <br>
+                mission est de favoriser la croissance économique, <br>
+                d'inspirer l'autonomie financière et d'apporter des <br>
+                solutions financières adaptées aux besoins uniques <br>
+                de nos clients.
+            </p>
+            <div class="div_sous_droite">
+                <p class="description-sous">Nous formons nos clients avant et après inscription</p>
+                <img src="../img/business-8150776_1280.jpg" alt="" class="image-sous-div">
+            </div>
+        </div>
+        </section>
+        <button class="savoir_plus"><a href="">En savoir plus</a></button>
+    </div>
+    <!-- cours d'initiation a notre plateforme -->
+    <div class="grande-div-cours">
+        <div class="div-cours">
+            <p> 1er cours : initiation à la finance et aux différentes <br>
+                fonctionnalités de notre plateforme</p>
+            <button class="cours-button"><a href="">Cliquez ici</a></button>
+        </div> 
+    </div> 
+    <!-- temoignages -->
+    <div class="grande_div_temoignage">
+        <div class="div_p_temoignage">
+            <p class="p_temoignage">Témoignage</p>
+        </div>
+        <h3>Ce que disent nos lients</h3>
+        <div class="temoignage-div">
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 1" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">Dghjkl</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!</p> 
+            </div>
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 2" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">mlkjhgxdfghjkjhvc</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">"Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!"</p> 
+            </div>
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 3" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">qsdfghjkhgfdsq</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">"Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!"</p> 
+            </div>
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 4" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">Dghjkl</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">"Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!"</p> 
+            </div>
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 5" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">Dghjkl</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">"Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!"</p> 
+            </div>
+            <div class="temoignage">
+                <div class="nom_prof_img">
+                        <img src="../img/meeting-5395615_1280.jpg" alt="Image Témoin 6" class="nom_prof_img">
+                        <div style="text-align: justify; "> 
+                            <p style="font-size: 22px; font-weight: bold; color: #007BFF;">John Doe</p> 
+                            <p style="color: #777777">Dghjkl</p>
+                        </div>          
+                </div>
+                <p class="nom_prof_img">"Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable! Témoignage 1. Ce site est incroyable!"</p> 
+            </div>
+        </div>
+        <div class="bouton_next">
+            <i id="prev" class="fas fa-chevron-left"></i>
+            <i id="next" class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    <!-- contactez-nous -->
+    <section>
+        <h2 style="text-align: center;  font-family: 'Franklin Gothic Medium';color: #007BFF;">Contactez-nous</h2>
+
+        <div class="contact-div">
+            <div class="contact-info">
+                <h4>Adresse et Contact</h4>
+                <p>Appelez-Nous <br>0759152201/0585825774</p>
+                <p>Localisation <br>Côte d’ivoire <br>Abidjan, cocody angré gestoci</p>
+                <p>Heure de travail <br>Lun-vend 08:30 - 20:30 <br>Sam-dim 09:00 - 18:00</p>
+            </div>
+    
+            <div class="contact-form">
+                <h4>Formulaire de Contact</h4>
+                <form action="traitement_formulaire.php" method="post">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" required><br>
+    
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required><br>
+    
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" rows="4"  required></textarea><br>
+    
+                    <button class="button-envoyer" type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-logo">
+            <img src="votre-logo.png" alt="Logo">
+            <h3>Votre satisfaction <br> notre priorité, <br>sécurité garantie</h3>
+        </div>
+        <div class="footer-menu">
+            <h3>Menu 1</h3>
+            <ul>
+                <li><a href="#">Option 1</a></li>
+                <li><a href="#">Option 2</a></li>
+                <li><a href="#">Option 3</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu">
+            <h3>Menu 2</h3>
+            <ul>
+                <li><a href="#">Option 1</a></li>
+                <li><a href="#">Option 2</a></li>
+                <li><a href="#">Option 3</a></li>
+            </ul>
+        </div>
+        <div style="display: block; margin: 20px;">
+            <p style="display: block;">Recevoir des notifications</p>
+            <div class="email">
+                <input type="email" class="email-input" placeholder="Entrez votre email">
+                <button class="email-bouton">S'inscrire</button>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>            
+            </div>
+        </div>
+    </footer>
+    <script src="../static/js/accueil.js"></script>
+</body>
+</html>
+
+
