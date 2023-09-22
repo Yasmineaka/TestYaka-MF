@@ -169,47 +169,32 @@ def transfert():
         cursor.execute('UPDATE utilisateur SET solde = solde - ? WHERE id = ?', (montant, current_user.id))
         conn.commit()
 
-        # Enregistrer l'opération dans l'historique
-        cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant) VALUES (?, ?, ?)', (current_user.id, f"Transfert de F{montant} vers {destinataire_data[1]}", montant))
-        cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant) VALUES (?, ?, ?)', (destinataire_id, f"Transfert de F{montant} par {current_user.nom}", montant))
-        conn.commit()
+        # Enregistrer l'opération de transfert dans l'historique avec le montant
+        description = f"Transfert de F{montant} vers {destinataire_data[1]}"
+        nouvelle_operation = HistoriqueOperation(utilisateur_id=current_user.id, description=description, montant=montant)
+        nouvelle_operation.save()
+
+        # Enregistrer l'opération de réception dans l'historique du destinataire
+        description_destinataire = f"Transfert de F{montant} par {current_user.nom}"
+        nouvelle_operation_destinataire = HistoriqueOperation(utilisateur_id=destinataire_id, description=description_destinataire, montant=montant)
+        nouvelle_operation_destinataire.save()
 
         flash('Transfert réussi !', 'success')
         return redirect('/dashboard')
 
-    cursor.execute('SELECT * FROM utilisateur WHERE id != ?', (current_user.id,))
-    utilisateurs = cursor.fetchall()
-    return render_template('transfert.html', utilisateurs=utilisateurs)
-
-
 @app.route('/recharge', methods=['GET', 'POST'])
 @login_required
-# def recharge():
-#     if request.method == 'POST':
-#         montant = float(request.form.get('montant'))
-
-#         if montant <= 0:
-#             flash('Le montant doit être positif.', 'danger')
-#         else:
-#             # Mettez à jour le solde de l'utilisateur
-#             current_user.solde += montant
-
-#             # Enregistrez l'opération de recharge dans l'historique
-#             cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant) VALUES (?, ?, ?)', (current_user.id, f"Rechargement de ${montant}", montant))
-#             conn.commit()
-#             flash('Rechargement réussi !', 'success')
-
-#     return redirect('/dashboard')
-
 def recharge():
     if request.method == 'POST':
         montant = float(request.form.get('montant'))
-
+        
         if montant <= 0:
             flash('Le montant doit être positif.', 'danger')
         else:
-            # Mettez à jour le solde de l'utilisateur
+            # Mettez à jour le solde de l'utilisateur dans la base de données
             current_user.solde += montant
+            cursor.execute('UPDATE utilisateur SET solde = ? WHERE id = ?', (current_user.solde, current_user.id))
+            conn.commit()
 
             # Enregistrez l'opération de recharge dans l'historique
             nouvelle_operation = HistoriqueOperation(utilisateur_id=current_user.id, description=f"Rechargement de F{montant}", montant=montant)
