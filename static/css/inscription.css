@@ -8,9 +8,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
+    width: 50%;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -25,25 +27,78 @@ h1 {
 form {
     margin-top: 20px;
 }
-
+a{
+    text-decoration: none;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
+input:hover{
+    border: 2px solid #007BFF;
+}
 button {
     background-color: #007BFF;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
+h3{
+    font-weight: lighter ;
+}
+h2{
+    font-size: 40px;
+}
+.div-input-file {
+    display: inline-block;
+    position: relative;
+    font-size: 13px;
+    overflow: hidden;
+    width: 45%;
+    height: 200px;
+    color: #8c8484;
+    border: 1px solid #ccc;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: #bdd9f5;
+    cursor: pointer;
+    text-align: justify;
+}
+i{
+    position: absolute;
+    font-size: 23px;
+    top: 5px;
+}
+.div-input-file input[type="file"] {
+    display: flex;
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.div-input-file label {
+    display: block;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.div-input-file:hover {
+    border: 2px solid #007BFF;
+}
+
+/* .custom-file-input input[type="file"]:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+} */
 
 button:hover {
     background-color: #0056b3;
@@ -51,4 +106,49 @@ button:hover {
 
 p {
     margin-top: 10px;
+}
+@media (max-width:800px){
+    .div-input-file{
+        height: 120px;
+        font-size: 10px;
+    }
+    img{
+        width: 50%;
+        height: 55px;
+        justify-content: flex-end;
+    }
+}
+@media (max-width:450px){
+    .div-input-file{
+      width: 200px;
+      height: 30px;
+    }
+}
+@media (max-width:450px){
+    h2{
+        font-size: 17px;
+    }
+    h3{
+        font-size: 13px;
+    }
+    p{
+        font-size: 12px;
+    }
+    input{
+        height: 7px;
+        font-size: 10px;
+    }
+    .div-input-file{
+ 
+        height: 100px;
+        width: 146px;
+        font-size: 10px;
+    }
+    img{
+        width: 50%;
+        height: 55px;
+    }
+    button{
+        padding: 6px 15px;
+    }
 }
