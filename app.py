@@ -81,6 +81,10 @@ def load_user(user_id):
 def accueil():
     return render_template("accueil.html")
 
+@app.route('/inscription_info')
+def inscription_info():
+    return render_template("inscription_info")
+
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
     if request.method == 'POST':

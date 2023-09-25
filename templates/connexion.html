@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,5 +17,187 @@
         </form>
         <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Inscrivez-vous</a></p>
     </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/css/inscription.css">
+    <title>Inscription</title>
+    <style>
+        body{
+            overflow: hidden;
+
+        }
+        .form-connexion {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            background-color: #fff;
+            padding: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2{
+           font-size: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        h4{
+            color: rgb(248, 83, 83);
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 20px;
+        }
+
+        a{
+            text-decoration: none;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] ,
+        input[type="file"]{
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input:hover{
+            border: 2px solid #007BFF;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        h3{
+            font-weight: lighter ;
+        }
+
+        .div-input-file {
+            display: inline-block;
+            position: static;
+            font-size: 13px;
+            overflow: hidden;
+            width: 45%;
+            height: 200px;
+            color: #8c8484;
+            border: 1px solid #ccc;
+            margin: 3px;
+            border-radius: 5px;
+            background-color: #bdd9f5;
+            cursor: pointer;
+            text-align: justify;
+        }
+
+        .div-input-file input[type="file"] {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .div-input-file label {
+            display: block;
+            padding: 10px 20px;
+            cursor: pointer;
+        
+        }
+
+        .div-input-file:hover {
+            border: 2px solid #007BFF;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        @media (max-width:800px){
+            .div-input-file{
+                height: 120px;
+                font-size: 10px;
+            }
+            img{
+                width: 50%;
+                height: 55px;
+                justify-content: flex-end;
+            }
+        }
+        @media (max-width:450px){
+            .div-input-file{
+            width: 200px;
+            height: 30px;
+            }
+        }
+        @media (max-width:450px){
+            h2{
+                font-size: 17px;
+            }
+            h3{
+                font-size: 13px;
+            }
+            p{
+                font-size: 12px;
+            }
+            input{
+                height: 7px;
+                font-size: 10px;
+            }
+            .div-input-file{
+        
+                height: 100px;
+                width: 146px;
+                font-size: 10px;
+            }
+            img{
+                width: 50%;
+                height: 55px;
+            }
+            button{
+                padding: 6px 15px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <section class="form-connexion">
+        <div class="container">
+            <a href=""><h2 style="color: rgb(188, 188, 89);">Test<span style="color: #007BFF;">Yaka-MF</span></h2></a>
+            <h3>Connexion</h3>
+            <p>Entrez les données que vous avez utiliser lors de votre inscription</p>
+            <form method="POST">
+                <input type="email" name="email" placeholder="Adresse e-mail" required>
+                <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+            <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Inscrivez-vous</a></p>
+        </div>
+    </section>
 </body>
 </html>

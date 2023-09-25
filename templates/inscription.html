@@ -5,19 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="../static/css/inscription.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Inscription</title>
 </head>
 <body>
     <div class="container">
-        <h1>Inscription</h1>
+        <a href=""><h2 style="color: rgb(188, 188, 89);">Test<span style="color: #007BFF;">Yaka-MF</span></h2></a>
+        <h3>Inscription</h3>
+        <p>Entrez vos données  pour la creation de votre compte</p>
         <form method="POST">
             <input type="text" name="nom" placeholder="Nom" required>
             <input type="email" name="email" placeholder="Adresse e-mail" required>
             <input type="text" name="contact" placeholder="Numéro de contact" required>
             <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
+            <div class="div-input-file">
+                <input type="file" id="file-input" required />
+                <label for="file-input">Importer l'image d'une pièce: carte d'identité, passeport,attestation...<i class='bx bxs-cloud-download'></i></label>
+                <img id="piece-identite-file" src="" alt="Aperçu de la pièce d'identité" style="display: none; max-width: 100%; max-height: 60%;">
+            </div>
+            <div class="div-input-file">
+                <input type="file" id="file-input2" required />
+                <label for="file-input2">Importer votre photo de face<i class='bx bxs-cloud-download'></i></label>
+                <img id="piece-identite-file2" src="" alt="Aperçu de la pièce d'identité" style="display: none; max-width: 100%; max-height: 60%;">
+            </div>
             <button type="submit">S'inscrire</button>
         </form>
         <p>Déjà inscrit ? <a href="{{ url_for('connexion') }}">Connectez-vous</a></p>
     </div>
+    <script>
+        const pieceIdentiteInput = document.getElementById("file-input");
+        const pieceIdentitePreview = document.getElementById("piece-identite-file");
+        pieceIdentiteInput.addEventListener("change", function() {
+            // Vérifier si un fichier a été sélectionné
+            if (pieceIdentiteInput.files.length > 0) {
+                const selectedFile = pieceIdentiteInput.files[0];
+                // Mettre à jour avec les informations du fichier sélectionné
+                pieceIdentitePreview.style.display = "block";
+                pieceIdentitePreview.src = URL.createObjectURL(selectedFile);
+                pieceIdentitePreview.alt = selectedFile.name;
+            } else {
+                // pour réinitialiser si aucun fichier n'est sélectionné
+                pieceIdentitePreview.style.display = "none";
+                pieceIdentitePreview.src = "";
+                pieceIdentitePreview.alt = "";
+            }
+        });
+        const photoFaceInput = document.getElementById("file-input2");
+        const photoFacePreview = document.getElementById("piece-identite-file2");
+        photoFaceInput.addEventListener("change", function() {
+            // Vérifier si un fichier a été sélectionné
+            if (photoFaceInput.files.length > 0) {
+                const selectedFile =photoFaceInput.files[0];
+                // Mettre à jour avec les informations du fichier sélectionné
+                 photoFacePreview.style.display = "block";
+                 photoFacePreview.src = URL.createObjectURL(selectedFile);
+                 photoFacePreview.alt = selectedFile.name;
+            } else {
+                // pour réinitialiser si aucun fichier n'est sélectionné
+                 photoFacePreview.style.display = "none";
+                 photoFacePreview.src = "";
+                 photoFacePreview.alt = "";
+            }
+        });
+    </script>
 </body>
 </html>
