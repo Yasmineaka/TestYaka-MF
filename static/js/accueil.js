@@ -1,5 +1,13 @@
-// slide des temoignages
+// responsivité menu 
+// JavaScript pour activer/désactiver le menu burger
 
+const menuBurger = document.querySelector('.menu-burger-icon');
+const menuIcon = document.querySelector('.menu');
+
+menuBurger.addEventListener('click', () => {
+    menuIcon.classList.toggle('active');
+});
+// slide des temoignages
 const temoignages = document.querySelectorAll('.temoignage');
 let currentIndex = 0;
 let intervalId;

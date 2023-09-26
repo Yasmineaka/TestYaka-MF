@@ -9,20 +9,28 @@
     <!-- tableau de bord -->
     <div class="tableau-de-bord">
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <a href=""><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
         </div>
-        
+
         <div class="menu">
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
+                <li><a href="#">Tableau de bord</a></li>
                 <li><a href="#">À Propos</a></li>
             </ul>
         </div>
         <div class="boutons">
             <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
-            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>            
+            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        </div>
+        <div class="menu-burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </div>
+
+     <!-- fin tableau de bord -->
     <section class="section-accueil">
         <section class="section-accueil">
             <img src="../static/img/business-8150776_1280.jpg" alt="Image d'accueil">
@@ -75,29 +83,30 @@
   <!-- A propos de nous -->
     <div class='apropos'>
         <section>
-        <img class="img_apropos" src="../static/img/business-8150776_1280.jpg" alt="" class="image">
+        <img class="img_apropos" src="../static/img/business-8150776_1280.jpg" alt="">
+        <p class="description"> Nous sommes Finance Votre Partenaire en Matière <br>
+            de Microfinance <br>
+            Chez Finance, nous croyons en la<br>
+             transformation des vies par l'accès à des services <br>
+            financiers inclusifs. Depuis notre création, notre <br>
+            mission est de favoriser la croissance économique, <br>
+            d'inspirer l'autonomie financière et d'apporter des <br>
+            solutions financières adaptées aux besoins uniques <br>
+            de nos clients.
+        </p>
         <div class="div-image-horizontales">
             <div class="div_sous_gauche">
-                <p class="description-sous">La sécurité de votre compte est garantie</p>
+                <p class="description-sous">La sécurité de votre compte est entièrement <br>garantie à 99,9%</p>
                 <img src="../static/img/business-8150776_1280.jpg" alt="" class="image-sous-div">
             </div>
-            <p class="description"> Nous sommes Finance Votre Partenaire en Matière <br>
-                de Microfinance <br>
-                Chez Finance, nous croyons en la<br>
-                 transformation des vies par l'accès à des services <br>
-                financiers inclusifs. Depuis notre création, notre <br>
-                mission est de favoriser la croissance économique, <br>
-                d'inspirer l'autonomie financière et d'apporter des <br>
-                solutions financières adaptées aux besoins uniques <br>
-                de nos clients.
-            </p>
             <div class="div_sous_droite">
-                <p class="description-sous">Nous formons nos clients avant et après inscription</p>
+                <p class="description-sous">Nous formons nos clients avant et après <br> inscription</p>
                 <img src="../static/img/business-8150776_1280.jpg" alt="" class="image-sous-div">
             </div>
         </div>
-        </section>
         <button class="savoir_plus"><a href="">En savoir plus</a></button>
+        </section>
+        
     </div>
     <!-- cours d'initiation a notre plateforme -->
     <div class="grande-div-cours">
@@ -244,7 +253,14 @@
             </div>
         </div>
     </footer>
-    <script src="../static/js/accueil.js"></script>
+    <script src="../static/js/accueil.js">
+        const menuBurger = document.querySelector('.menu-burger-icon');
+const menuIcon = document.querySelector('.menu');
+
+menuBurger.addEventListener('click', () => {
+    menuIcon.classList.toggle('active');
+});
+    </script>
 </body>
 </html>
 

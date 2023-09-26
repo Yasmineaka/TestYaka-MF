@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #F5F5F5;
+        }
+
+        /* Styles pour le tableau de bord */
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .tableau-de-bord {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #65C0FF;
+            color: white;
+        }
+
+        /* menu */
+
+        .menu li {
+            margin-right: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .boutons button {
+            background-color: #65C0FF;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .boutons button:hover {
+            background-color: #65bfff75;
+        }
+
+        /* Styles pour le menu burger */
+        .menu-burger-icon {
+            display: none; /* Cache le bouton burger par défaut */
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+
+        /* Media Query pour les petits écrans */
+        @media (max-width: 768px) {
+            .menu ul {
+                display: none; /* Cache le menu principal par défaut */
+            }
+
+            .menu-burger-icon {
+                display: flex; /* Affiche le bouton burger pour les petits écrans */
+            }
+
+            .menu.active ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100px;
+                left: 0;
+                background-color: #65C0FF;
+                width: 100%;
+                padding: 10px;
+                text-align: center;
+                /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
+                z-index: 1;
+            }
+
+            .menu.active ul li {
+                margin: 10px 0;
+            }
+        }
+        @media (max-width: 435px) {
+            .boutons button {
+                width: 83px;
+                font-size: 10px;
+            }
+        }
+        @media (max-width: 400px) {
+            .logo{
+                font-size: 12px;
+            }
+            .boutons button {
+               font-size: 9px;
+               height: 30px;
+               width: 78px;
+            }
+        }
+        @media (max-width: 350px) {
+            .logo{
+             margin-left: -15px;
+                font-size: 10px;
+            }
+            .boutons button {
+               font-size: 9px;
+               height: 30px;
+               width: 78px;
+            }
+            .menu-burger-icon{
+                height: 24px;
+                width: 8px;
+                padding: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tableau-de-bord">
+        <div class="logo">
+            <a href=""><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
+                <li><a href="#">Tableau de bord</a></li>
+                <li><a href="#">À Propos</a></li>
+            </ul>
+        </div>
+        <div class="boutons">
+            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
+            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        </div>
+        <div class="menu-burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <script>
+        const menuBurger = document.querySelector('.menu-burger-icon');
+        const menuIcon = document.querySelector('.menu');
+
+        menuBurger.addEventListener('click', () => {
+            menuIcon.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

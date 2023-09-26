@@ -1,4 +1,4 @@
-
+/* tableau de bord */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,10 +6,12 @@ body {
     background: #F5F5F5;
 }
 
-a{
+/* Styles pour le tableau de bord */
+a {
     text-decoration: none;
     color: white;
 }
+
 .tableau-de-bord {
     display: flex;
     justify-content: space-between;
@@ -19,20 +21,10 @@ a{
     color: white;
 }
 
-.logo img {
-    width: 50px;
-}
-
 /* menu */
-.menu ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
 
 .menu li {
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .menu a {
@@ -40,13 +32,26 @@ a{
     color: white;
 }
 
-/* boutons */
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
 .boutons button {
     background-color: #65C0FF;
     color: white;
     border: 1px solid white;
-    padding: 10px 10px;
-    border-radius: 12px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
@@ -54,33 +59,21 @@ a{
     background-color: #65bfff75;
 }
 
-
-/*  carrés */
-.carre {
-    width: 23%;
-    height: 100px;
-    background-color: #007BFF;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.texte-carre {
-    position: absolute;
-    bottom: 10px;
-    left: 10px; 
-    right: 10px; 
+/* Styles pour le menu burger */
+.menu-burger-icon {
+    display: none; /* Cache le bouton burger par défaut */
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.texte-carre h2 {
-    font-size: 18px;
-    margin: 0;
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
 }
 
-.texte-carre p {
-    font-size: 14px;
-    margin: 0;
-}
+/* fin tableau de bord */
 
 /* superposition de texte */
 .superposition-texte {
@@ -171,7 +164,7 @@ a{
     margin: 1px;
     width: 100%;
     border-radius: 10px;
-    height: 160px;
+    height: auto;
 }
 .texte-box p {
     font-size: 16px;
@@ -210,10 +203,7 @@ a{
     text-align: center;
     padding: 10px;
 }
-.image{
-    max-width: 100%;
-    height: auto;
-}
+
 .img_apropos{
     position: relative;
     height: 200px;
@@ -227,17 +217,20 @@ a{
     color: white;
 }
 .image-sous-div{
-    max-width: 33%;
-    height: auto;
+    height: 200px;
+    width: 300px;
+    
 }
 .div-image-horizontales{
+    position: relative;
+    margin-top: -240px;
     display: flex;
     justify-content: space-around;
 }
 .description{
     text-align: center;
     margin-top: 10px;
-    color: white;
+    color: white
 }
 .div_sous_droite{
     width: 30%;
@@ -246,13 +239,13 @@ a{
     width: 30%;
 }
 .savoir_plus{
-    position: absolute;
+    position:relative;
     background: white;
     border: 1px solid white;
     padding: 9px;
-    margin: 20px;
+    
     border-radius: 0 5px 0 5px;
-    margin-left: 35.5%;
+    justify-content: end;
 }
 .savoir_plus a{
     color: #65C0FF;
@@ -523,212 +516,106 @@ footer {
     text-decoration: none;
 }
 
-
-
-
-
-
-
-/* Styles de base pour tous les écrans */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #F5F5F5;
-    color: #333;
-}
-
-/* Styles pour le tableau de bord */
-.tableau-de-bord {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #65C0FF;
-    color: white;
-}
-
-.logo img {
-    width: 50px;
-}
-
-.menu ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.menu li {
-    margin-right: 20px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-}
-
-.boutons button {
-    background-color: #65C0FF;
-    color: white;
-    border: 1px solid white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.boutons button:hover {
-    background-color: #65bfff75;
-}
-
-/* Styles pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 768px) {
-    .menu {
-        display: none; /* Masquer le menu */
-    }
-
-    .boutons {
-        display: none; /* Masquer les boutons de connexion et d'inscription */
-    }
-
-    .tableau-de-bord {
-        flex-direction: column; /* Aligner les éléments verticalement */
-        text-align: center;
-    }
-}
-
-/* Styles pour les écrans de petite taille (téléphones) */
-@media (max-width: 480px) {
-    .menu {
-        display: none; /* Masquer le menu */
-    }
-
-    .boutons {
-        display: none; /* Masquer les boutons de connexion et d'inscription */
-    }
-
-    .tableau-de-bord {
-        flex-direction: column; /* Aligner les éléments verticalement */
-        text-align: center;
-    }
-
-    /* Styles pour la section d'accueil */
-    .section-accueil img {
+/* responsivité */
+@media (max-width: 1736px) {
+    .contenu-accueil{
         height: auto;
-        max-width: 100%;
-    }
-
-    .superposition-texte h3 {
-        font-size: 16px;
-        margin-top: 30px;
-    }
-
-    .bouton-commencer {
-        margin-top: 20px;
-        padding: 8px 16px;
-    }
-
-    /* Styles pour le contenu d'accueil */
-    .contenu-accueil {
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    .texte-box {
-        height: auto;
-        margin-bottom: 20px;
-    }
-
-    .texte-box p {
-        font-size: 14px;
-    }
-
-    /* Styles pour la section "À propos" */
-    .apropos {
-        margin-top: 100px;
-        height: auto;
-        border-radius: 0;
-    }
-
-    .description-sous,
-    .description {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    /* Styles pour les cours */
-    .grande-div-cours {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .div-cours {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    /* Styles pour les témoignages */
-    .grande_div_temoignage {
-        margin-top: 20px;
-    }
-
-    .p_temoignage {
-        width: auto;
-        padding: 4px 10px;
-    }
-
-    .temoignage {
         display: block;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    /* Styles pour la section de contact */
-    .contact-div {
-        flex-direction: column;
         width: 90%;
     }
+    .div-cours p{
+        font-size: 13px;
+    }
+    }
+    @media (max-width: 1430px) {
+        .apropos{
+            height: auto;
+        }
+   
+        .div-image-horizontales{
+            display: flex;
+            justify-content: space-between;
+        }
+        .div-cours p{
+            font-size: 12px;
+        }
+        .cours-button{
+            font-size: 12px;
+        }
+        }
+    @media (max-width: 1188px) {
+        .contenu-accueil{
+           font-size: 14px;
+        }
+        .div-cours p{
+            font-size: 10px;
+        }
+        .cours-button a{
+            font-size: 12px;
+        }
+        .cours-button {
+            padding: 0;
+        }
+        .texte-box p{
+            font-size: 12px;
+        }
+        }
+@media (max-width: 768px) {
+    .menu ul {
+        display: none; /* Cache le menu principal par défaut */
+    }
 
-    input,
-    textarea {
+    .menu-burger-icon {
+        display: flex; /* Affiche le bouton burger pour les petits écrans */
+    }
+
+    .menu.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        background-color: #65C0FF;
         width: 100%;
+        padding: 10px;
+        text-align: center;
+        /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
+        z-index: 1;
     }
 
-    .email-input {
-        border-radius: 5px;
-    }
-
-    .email-bouton {
-        border-radius: 5px;
-        width: 100%;
+    .menu.active ul li {
+        margin: 10px 0;
     }
 }
-
-/* Styles pour le pied de page (footer) */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    display: flex;
-    margin-top: 20px;
-    justify-content: space-between;
-    align-items: center;
+@media (max-width: 435px) {
+    .boutons button {
+        width: 83px;
+        font-size: 10px;
+    }
 }
-
-.footer-logo img {
-    width: 30px;
-    margin-right: 10px;
+@media (max-width: 400px) {
+    .logo{
+        font-size: 12px;
+    }
+    .boutons button {
+       font-size: 9px;
+       height: 30px;
+       width: 78px;
+    }
 }
-
-.footer-logo h3 {
-    font-size: 14px;
-}
-
-.footer-menu ul {
-    display: none;
-}
-
-.social-icons a {
-    font-size: 20px;
+@media (max-width: 350px) {
+    .logo{
+     margin-left: -15px;
+        font-size: 10px;
+    }
+    .boutons button {
+       font-size: 9px;
+       height: 30px;
+       width: 78px;
+    }
+    .menu-burger-icon{
+        height: 24px;
+        width: 8px;
+        padding: 3px;
+    }
 }

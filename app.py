@@ -7,11 +7,11 @@ import datetime
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'votre_clé_secrète'
 
-# Connexion à la base de données SQLite
+# ma base de données SQLite3
 conn = sqlite3.connect('database.db', check_same_thread=False)
 cursor = conn.cursor()
 
-# Création de la table Utilisateur
+# ma création de la table Utilisateur
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS utilisateur (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -153,13 +153,13 @@ def solde():
 def transfert():
     if request.method == 'POST':
         montant = float(request.form.get('montant'))
-        contact_destinataire = request.form.get('contact_destinataire')  # Récupérez le contact saisi par l'utilisateur
+        contact_destinataire = request.form.get('contact_destinataire') 
 
         if montant <= 0:
             flash('Le montant doit être positif.', 'danger')
             return redirect('/transfert')
 
-        # Recherchez l'utilisateur correspondant au contact du destinataire dans la base de données
+        # Rechercher l'utilisateur qui  correspond au contact de celui qui recois
         cursor.execute('SELECT * FROM utilisateur WHERE contact = ?', (contact_destinataire,))
         destinataire_data = cursor.fetchone()
 
@@ -176,18 +176,18 @@ def transfert():
         cursor.execute('UPDATE utilisateur SET solde = solde - ? WHERE id = ?', (montant, current_user.id))
         conn.commit()
 
-        # Enregistrez l'opération de transfert dans l'historique avec le montant
+        # Enregistrer le transfert dans l'historique avec le montant
         description = f"Transfert de F{montant} vers {destinataire_data[1]}"
         nouvelle_operation = HistoriqueOperation(utilisateur_id=current_user.id, description=description, montant=montant)
         nouvelle_operation.save()
 
-        # Enregistrez l'opération de réception dans l'historique du destinataire
+        # Enregistrer la réception dans l'historique du destinataire
         description_destinataire = f"Transfert de F{montant} par {current_user.nom}"
         nouvelle_operation_destinataire = HistoriqueOperation(utilisateur_id=destinataire_data[0], description=description_destinataire, montant=montant)
         nouvelle_operation_destinataire.save()
 
         flash('Transfert réussi !', 'success')
-        return redirect('/dashboard')  # Vous devez retourner une réponse valide ici
+        return redirect('/dashboard') 
 
     return render_template('transfert.html')
 
@@ -196,17 +196,17 @@ def transfert():
 def recharge():
     if request.method == 'POST':
         montant = float(request.form.get('montant'))
-        contact = request.form.get('contact')  # Récupérez le contact saisi par l'utilisateur
+        contact = request.form.get('contact') 
         
         if montant <= 0:
             flash('Le montant doit être positif.', 'danger')
         else:
-            # Mettez à jour le solde de l'utilisateur dans la base de données
+            # pour mettre à jour le solde de l'utilisateur
             current_user.solde += montant
             cursor.execute('UPDATE utilisateur SET solde = ? WHERE id = ?', (current_user.solde, current_user.id))
             conn.commit()
 
-            # Enregistrez l'opération de recharge dans l'historique avec le contact
+            # pour enregistrez la recharge dans l'historique avec le contact
             description = f"Rechargement de F{montant} via le contact : {contact}"
             date_heure = datetime.datetime.now()
             cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant, date, contact_destinataire) VALUES (?, ?, ?, ?, ?)', 
