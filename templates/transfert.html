@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,28 @@
                     <option value="{{ utilisateur.id }}">{{ utilisateur.nom }}</option>
                 {% endfor %}
             </select>            
+            <input type="number" name="montant" placeholder="Montant" required>
+            <button type="submit">Transférer</button>
+        </form>        
+        <a href="{{ url_for('dashboard') }}">Retour au tableau de bord</a>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/css/transfert.css">
+    <title>Transfert d'argent</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Transfert d'argent</h1>
+        <form method="POST">
+            <label for="contact_destinataire">Entrez le contact du destinataire :</label>
+            <input type="text" name="contact_destinataire" id="contact_destinataire" placeholder="Contact du destinataire" required>
             <input type="number" name="montant" placeholder="Montant" required>
             <button type="submit">Transférer</button>
         </form>        

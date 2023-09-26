@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'votre_clé_secrète'
@@ -27,8 +28,9 @@ cursor.execute('''
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         utilisateur_id INTEGER,
         description TEXT,
+        contact_destinataire TEXT,
         montant REAL,
-        date DATETIME DEFAULT CURRENT_TIMESTAMP
+        date DATETIME DEFAULT CURRENT_TIMES
     )
 ''')
 conn.commit()
@@ -78,6 +80,10 @@ def load_user(user_id):
 @app.route('/')
 def accueil():
     return render_template("accueil.html")
+
+@app.route('/inscription_info')
+def inscription_info():
+    return render_template("inscription_info")
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -146,47 +152,51 @@ def solde():
 @login_required
 def transfert():
     if request.method == 'POST':
-        destinataire_id = request.form.get('id')  # Utilisez le nom de champ correct, qui est 'id'
         montant = float(request.form.get('montant'))
+        contact_destinataire = request.form.get('contact_destinataire')  # Récupérez le contact saisi par l'utilisateur
 
         if montant <= 0:
             flash('Le montant doit être positif.', 'danger')
             return redirect('/transfert')
 
-        cursor.execute('SELECT * FROM utilisateur WHERE id = ?', (destinataire_id,))
+        # Recherchez l'utilisateur correspondant au contact du destinataire dans la base de données
+        cursor.execute('SELECT * FROM utilisateur WHERE contact = ?', (contact_destinataire,))
         destinataire_data = cursor.fetchone()
 
         if not destinataire_data:
-            flash('Destinataire introuvable.', 'danger')
+            flash("Destinataire introuvable ou non inscrit sur la plateforme.", 'danger')
             return redirect('/transfert')
 
         if current_user.solde < montant:
             flash('Solde insuffisant.', 'danger')
             return redirect('/transfert')
 
-        # Effectuer la transaction
-        cursor.execute('UPDATE utilisateur SET solde = solde + ? WHERE id = ?', (montant, destinataire_id))
+        # Effectuez la transaction
+        cursor.execute('UPDATE utilisateur SET solde = solde + ? WHERE id = ?', (montant, destinataire_data[0]))
         cursor.execute('UPDATE utilisateur SET solde = solde - ? WHERE id = ?', (montant, current_user.id))
         conn.commit()
 
-        # Enregistrer l'opération dans l'historique
-        cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant) VALUES (?, ?, ?)', (current_user.id, f"Transfert de F{montant} vers {destinataire_data[1]}", montant))
-        cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant) VALUES (?, ?, ?)', (destinataire_id, f"Transfert de F{montant} par {current_user.nom}", montant))
-        conn.commit()
+        # Enregistrez l'opération de transfert dans l'historique avec le montant
+        description = f"Transfert de F{montant} vers {destinataire_data[1]}"
+        nouvelle_operation = HistoriqueOperation(utilisateur_id=current_user.id, description=description, montant=montant)
+        nouvelle_operation.save()
+
+        # Enregistrez l'opération de réception dans l'historique du destinataire
+        description_destinataire = f"Transfert de F{montant} par {current_user.nom}"
+        nouvelle_operation_destinataire = HistoriqueOperation(utilisateur_id=destinataire_data[0], description=description_destinataire, montant=montant)
+        nouvelle_operation_destinataire.save()
 
         flash('Transfert réussi !', 'success')
-        return redirect('/dashboard')
+        return redirect('/dashboard')  # Vous devez retourner une réponse valide ici
 
-    cursor.execute('SELECT * FROM utilisateur WHERE id != ?', (current_user.id,))
-    utilisateurs = cursor.fetchall()
-    return render_template('transfert.html', utilisateurs=utilisateurs)
-
+    return render_template('transfert.html')
 
 @app.route('/recharge', methods=['GET', 'POST'])
 @login_required
 def recharge():
     if request.method == 'POST':
         montant = float(request.form.get('montant'))
+        contact = request.form.get('contact')  # Récupérez le contact saisi par l'utilisateur
         
         if montant <= 0:
             flash('Le montant doit être positif.', 'danger')
@@ -196,14 +206,15 @@ def recharge():
             cursor.execute('UPDATE utilisateur SET solde = ? WHERE id = ?', (current_user.solde, current_user.id))
             conn.commit()
 
-            # Enregistrez l'opération de recharge dans l'historique
-            nouvelle_operation = HistoriqueOperation(utilisateur_id=current_user.id, description=f"Rechargement de F{montant}", montant=montant)
-            nouvelle_operation.save()
+            # Enregistrez l'opération de recharge dans l'historique avec le contact
+            description = f"Rechargement de F{montant} via le contact : {contact}"
+            date_heure = datetime.datetime.now()
+            cursor.execute('INSERT INTO historique_operation (utilisateur_id, description, montant, date, contact_destinataire) VALUES (?, ?, ?, ?, ?)', 
+                           (current_user.id, description, montant, date_heure, contact))
+            conn.commit()
 
             flash('Rechargement réussi !', 'success')
 
     return redirect('/dashboard')
-
-
 if __name__ == '__main__':
     app.run(debug=True)

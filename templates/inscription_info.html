@@ -7,14 +7,6 @@
     <link rel="stylesheet" href="../static/css/inscription.css">
     <title>Inscription</title>
     <style>
-        /* styles.css */
-body{
-    overflow: hidden;
-
-}
-/* informationa savoir */
-
-/* fin */
 .form-connexion {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -39,7 +31,7 @@ h1 {
     color: #333;
 }
 h2{
-    font-size: 40px;
+    font-size: 30px;
 }
 h4{
     color: rgb(248, 83, 83);
@@ -184,7 +176,7 @@ p {
                 Pour en savoir plus sur notre  politique<br> de confidentialité, veuillez consulter notre<br>
                 <a href="">politique de confidentialité</a>.
             </p>
-            <button><a style="color: white;" href="../templates/inscription.html">ok</a></button>
+            <button><a style="color: white;" href="{{url_for('inscription')}}">ok</a></button>
         </section>
         <div class="container">
             <a href=""><h2 style="color: rgb(188, 188, 89);">Test<span style="color: #007BFF;">Yaka-MF</span></h2></a>

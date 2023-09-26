@@ -1,0 +1,77 @@
+<style>
+    /* Style pour la barre de navigation */
+.tableau-de-bord {
+    background-color: #007BFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour le logo */
+.logo img {
+    width: 100px; /* Ajustez la taille du logo selon vos besoins */
+}
+
+/* Style pour le menu */
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #0056b3; /* Couleur au survol */
+}
+
+/* Style pour les boutons de connexion et d'inscription */
+.boutons button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.boutons button:hover {
+    background-color: white;
+    border-color: #007BFF;
+    color: #007BFF;
+}
+
+</style>
+<div class="tableau-de-bord">
+    <div class="logo">
+        <img src="../static/img/business-8150776_1280.jpg" alt="Logo">
+    </div>
+    
+    <div class="menu">
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">À Propos</a></li>
+        </ul>
+    </div>
+    <div class="boutons">
+        <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
+        <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        <button><a href="{{ url_for('profil') }}">Profil</a></button> <!-- Ajoutez ce bouton -->
+    </div>
+</div>
