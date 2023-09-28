@@ -586,11 +586,17 @@ footer {
     .menu.active ul li {
         margin: 10px 0;
     }
+    .texte-box p{
+        font-size: 10px;
+    }
 }
 @media (max-width: 435px) {
     .boutons button {
         width: 83px;
         font-size: 10px;
+    }
+    .texte-box p{
+        font-size: 8px;
     }
 }
 @media (max-width: 400px) {
@@ -601,6 +607,9 @@ footer {
        font-size: 9px;
        height: 30px;
        width: 78px;
+    }
+    .texte-box p{
+        font-size: 7px;
     }
 }
 @media (max-width: 350px) {
@@ -618,4 +627,12 @@ footer {
         width: 8px;
         padding: 3px;
     }
+    .texte-box p{
+        font-size: 6px;
+    }
+    .contenu-texte {
+       width: 100%;
+    }
 }
+
+
