@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>À propos</title>
+    <link rel="stylesheet" href="../static/css/a_propos.css">
+</head>
+<body>
+    <div class="tableau-de-bord">
+        <div class="logo">
+            <a href="#"><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
+                <li><a href="{{ url_for('connexion') }}">Tableau de bord</a></li>
+                <li><a href="{{ url_for('a_propos') }}">À Propos</a></li>
+            </ul>
+        </div>
+        <div class="boutons">
+            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
+            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        </div>
+        <div class="menu-burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <h3>À propos de nous</h3>
+            <h5>Notre Équipe</h5>
+            <img class="img_principale" src="../static/img/nous.jpg" width="100%" height="500px" alt="">
+            <p>Nous sommes une entreprise de gestion financière dévouée à fournir des 
+                solutions de gestion de patrimoine de qualité supérieure à nos clients 
+                depuis plus de 20 ans.Nos services incluent la planification financière,
+                l'investissement, la gestion de portefeuille et bien plus encore. Nous 
+                aidons nos clients à atteindre leurs objectifs financiers à long terme.
+                Notre équipe est composée d'experts financiers chevronnés qui ont une 
+                vaste expérience dans l'industrie. Nous sommes déterminés à fournir les
+                 meilleures solutions pour nos clients.
+            </p>
+            <h3>Nos Services</h3>
+            <div class="image-container">
+                <div class="image-box">
+                    <img src="../static/img/business-8150776_1280.jpg" alt="Image 2">
+                    <p>Planification financière personnalisée.</p>
+                </div>
+                <div class="image-box">
+                    <img src="../static/img/img accueil.jpg" alt="Image 3">
+                    <p>Gestion de portefeuille diversifiée.</p>
+                </div>
+                <div class="image-box">
+                    <img src="../static/img/business-8150776_1280.jpg" alt="Image 4">
+                    <p>Conseils financiers d'experts.</p>
+                </div>
+                <div class="image-box">
+                    <img src="../static/img/img accueil.jpg" alt="Image 5">
+                    <p>Stratégies d'investissement avancées.</p>
+                </div>
+            </div>
+        </div>
+
+            <h3>Contactez-nous</h3>
+            <p>Pour toute question ou demande de renseignements, n'hésitez pas à nous contacter. Nous sommes là pour vous aider à prendre des décisions financières éclairées.</p>
+            <section>
+                <div class="contact-div">
+                    <div class="contact-info">
+                        <h4>Adresse et Contact</h4>
+                        <p>Appelez-Nous <br>0759152201/0585825774</p>
+                        <p>Localisation <br>Côte d’ivoire <br>Abidjan, cocody angré gestoci</p>
+                        <p>Heure de travail <br>Lun-vend 08:30 - 20:30 <br>Sam-dim 09:00 - 18:00</p>
+                    </div>
+            
+                    <div class="contact-form">
+                        <h4>Formulaire de Contact</h4>
+                        <form action="traitement_formulaire.php" method="post">
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom" name="nom" required><br>
+            
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required><br>
+            
+                            <label for="message">Message :</label>
+                            <textarea id="message" name="message" rows="4"  required></textarea><br>
+            
+                            <button class="button-envoyer" type="submit">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+    </div>
+</body>
+</html>

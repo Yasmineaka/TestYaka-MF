@@ -4,6 +4,8 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'votre_clé_secrète'
 
@@ -46,6 +48,18 @@ cursor.execute('''
 ''')
 conn.commit()
 
+# Création de la table Compte epargne
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS compte_epargne (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        utilisateur_id INTEGER,
+        montant_epargne REAL,
+        FOREIGN KEY (utilisateur_id) REFERENCES utilisateur (id)
+    )
+''')
+conn.commit()
+
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'connexion'
 
@@ -60,6 +74,7 @@ class Utilisateur(UserMixin):
 
     def get_id(self):
         return str(self.id)
+
 class HistoriqueOperation:
     def __init__(self, utilisateur_id, description, montant):
         self.utilisateur_id = utilisateur_id
@@ -77,13 +92,45 @@ def load_user(user_id):
         return Utilisateur(*utilisateur_data)
     return None
 
+    
+# accueil generale
 @app.route('/')
 def accueil():
     return render_template("accueil.html")
+# accueil après inscription
+@app.route('/accueil_inscrip')
+@login_required
+def accueil_inscrip():
+    return render_template("accueil_inscrip.html")
+@app.route('/compte_epargne', methods=['POST','GET'])
+@login_required
+def compte_epargne():
+    if request.method == 'POST':
+        montant_epargne = float(request.form.get('montant_epargne'))
+
+        if montant_epargne <= 0:
+            flash('Le montant doit être positif.', 'danger')
+        elif current_user.solde < montant_epargne:
+            flash('Solde insuffisant.', 'danger')
+        else:
+            # Soustraire le montant de l'épargne du solde de l'utilisateur
+            current_user.solde -= montant_epargne
+
+            # Créer un compte épargne pour l'utilisateur actuel
+            cursor.execute('INSERT INTO compte_epargne (utilisateur_id, montant_epargne) VALUES (?, ?)', (current_user.id, montant_epargne))
+            conn.commit()
+
+            # Mettre à jour le solde dans la base de données
+            cursor.execute('UPDATE utilisateur SET solde = ? WHERE id = ?', (current_user.solde, current_user.id))
+            conn.commit()
+
+            flash('Compte épargne créé avec succès !', 'success')
+
+    return redirect('/compte_epargne')
 
 @app.route('/inscription_info')
 def inscription_info():
-    return render_template("inscription_info")
+    return render_template("inscription_info.html")
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -128,6 +175,35 @@ def connexion():
             flash('Identifiants incorrects. Veuillez réessayer.', 'danger')
 
     return render_template('connexion.html')
+
+@app.route('/profil', methods=['GET', 'POST'])
+@login_required
+def profil():
+    return render_template('profil.html', nom=current_user.nom, email=current_user.email, contact=current_user.contact)
+
+
+@app.route('/profil/modifier', methods=['GET', 'POST'])
+@login_required
+def modifier_profil():
+    if request.method == 'POST':
+        nom = request.form.get('nom')
+        email = request.form.get('email')
+        contact = request.form.get('contact')
+
+        # Mettre à jour les informations de l'utilisateur
+        current_user.nom = nom
+        current_user.email = email
+        current_user.contact = contact
+
+        # Mettre à jour les informations dans la base de données
+        cursor.execute('UPDATE utilisateur SET nom = ?, email = ?, contact = ? WHERE id = ?', (nom, email, contact, current_user.id))
+        conn.commit()
+
+        flash('Profil mis à jour avec succès !', 'success')
+
+    return render_template('modifier_profil.html', utilisateur=current_user)
+
+
 
 @app.route('/dashboard')
 @login_required
@@ -216,5 +292,19 @@ def recharge():
             flash('Rechargement réussi !', 'success')
 
     return redirect('/dashboard')
+
+
+@app.route('/a_propos')
+def a_propos():
+    return render_template('a_propos.html')
+
+# -----------------------------------Administrateur----------------------------------
+# @app.route('/admin', methods=['GET', 'POST'])
+# @login_required
+# def admin():
+#     return render_template('admin.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

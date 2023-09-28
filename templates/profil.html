@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votre Profil</title>
     <style>
-        /* Ajoutez ici vos styles CSS personnalisés */
         .profile-container {
             text-align: center;
             margin-top: 20px;
@@ -25,22 +24,24 @@
         .profile-info p {
             font-size: 18px;
             margin: 10px 0;
+            color: blue;
         }
     </style>
 </head>
 <body>
     <div class="profile-container">
         <h1>Votre Profil</h1>
-        <img class="profile-image" src="{{ url_for('static', filename='uploads/' + utilisateur.photo_path) }}" alt="Photo de profil">
+        <img class="profile-image"  alt="Photo de profil">
         <form method="POST" enctype="multipart/form-data">
             <input type="file" name="photo" accept="image/*">
             <button type="submit">Mettre à jour la photo</button>
         </form>
         <div class="profile-info">
-            <p><strong>Nom :</strong> {{ utilisateur.nom }}</p>
-            <p><strong>Email :</strong> {{ utilisateur.email }}</p>
-            <p><strong>Contact :</strong> {{ utilisateur.contact }}</p>
+            <p><strong>Nom :</strong> {{ nom }}</p>
+            <p><strong>Email :</strong> {{ email }}</p>
+            <p><strong>Contact :</strong> {{ contact }}</p>
         </div>
+        <a href="{{url_for('modifier_profil')}}">modifier</a>
     </div>
 </body>
 </html>

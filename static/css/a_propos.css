@@ -1,0 +1,199 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+/* tableau de bord */
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.tableau-de-bord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #65C0FF;
+    color: white;
+}
+
+/* menu */
+
+.menu li {
+    margin-right: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.boutons button {
+    background-color: #65C0FF;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.boutons button:hover {
+    background-color: #65bfff75;
+}
+
+/* Styles pour le menu burger */
+.menu-burger-icon {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* fin tableau de bord */
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.img_principale{
+ 
+}
+.image-box {
+    flex: 1;
+    max-width: calc(50% - 20px); /* Pour deux images par ligne */
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+h3{
+    text-align: center;
+    text-decoration: underline;
+    color: #65C0FF;
+}
+.image-box:hover {
+    transform: scale(1.05);
+}
+
+.image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* contactez-nous */
+.contact-div {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    margin: 0 auto; 
+    height: 300px;
+
+}
+
+.contact-info,
+.contact-form {
+    flex: 1;
+    padding: 6px;
+}
+
+.contact-form{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.contact-form h4{
+    color: #65C0FF;
+}
+.contact-info {
+    background-color: #65C0FF;
+    color: #fff; 
+    text-align: center;
+    border-right: 1px solid #ccc; 
+}
+
+label {
+    display: block;
+    color: rgb(42, 42, 42);
+}
+h4{
+    text-align: center;
+}
+input,
+textarea {
+    width: 60%;
+    height: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+textarea{
+    height: 20px;
+    max-width: 60%;
+    min-width: 60%;
+    max-height: 30px;
+}
+
+.button-envoyer {
+    background-color: #65C0FF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

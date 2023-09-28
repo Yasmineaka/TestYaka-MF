@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Profil</title>
+</head>
+<body>
+    <h1>Profil de {{ utilisateur.nom }}</h1>
+
+    <form method="POST" action="/profil/modifier">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="{{ utilisateur.nom }}" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" value="{{ utilisateur.email }}" required>
+
+        <label for="contact">Contact :</label>
+        <input type="text" id="contact" name="contact" value="{{ utilisateur.contact }}" required>
+
+        <button type="submit">Modifier</button>
+    </form>
+
+    <a href="/dashboard">Retour au tableau de bord</a>
+</body>
+</html>

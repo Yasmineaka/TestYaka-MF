@@ -61,7 +61,7 @@ a {
 
 /* Styles pour le menu burger */
 .menu-burger-icon {
-    display: none; /* Cache le bouton burger par défaut */
+    display: none; 
     flex-direction: column;
     cursor: pointer;
 }
