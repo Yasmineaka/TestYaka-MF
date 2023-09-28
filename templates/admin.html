@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list-unstyled">
+        {% for operation in historique_operations %}
+        <div class="historique-operation">
+            <p class="montant">{{ operation[4] }} F</p>
+            <div style="display: flex; justify-content: space-between; width: 58%; ">
+                <p class="date-heure">{{ operation[5] }}rfghj</p>
+                <p class="contact-destinataire">{{ operation[3] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+</body>
+</html>

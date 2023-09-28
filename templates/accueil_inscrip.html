@@ -15,13 +15,12 @@
         <div class="menu">
             <ul>
                 <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
-                <li><a href="{{ url_for('connexion') }}">Tableau de bord</a></li>
+                <li><a href="{{ url_for('dashboard') }}">Tableau de bord</a></li>
                 <li><a href="#">À Propos</a></li>
             </ul>
         </div>
         <div class="boutons">
-            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
-            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+            <button><a href="{{ url_for('deconnexion') }}">Déconnexion</a></button>
         </div>
         <div class="menu-burger-icon">
             <div class="bar"></div>

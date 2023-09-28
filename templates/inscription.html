@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <a href=""><h2 style="color: rgb(188, 188, 89);">Test<span style="color: #007BFF;">Yaka-MF</span></h2></a>
+        <a href="{{ url_for('accueil') }}"><h2 style="color: rgb(188, 188, 89);">Test<span style="color: #007BFF;">Yaka-MF</span></h2></a>
         <h3>Inscription</h3>
         <p>Entrez vos données  pour la creation de votre compte</p>
         <form method="POST">
@@ -53,10 +53,10 @@
         const photoFaceInput = document.getElementById("file-input2");
         const photoFacePreview = document.getElementById("piece-identite-file2");
         photoFaceInput.addEventListener("change", function() {
-            // Vérifier si un fichier a été sélectionné
+            // pour vérifier si mon fichier a été sélectionné
             if (photoFaceInput.files.length > 0) {
                 const selectedFile =photoFaceInput.files[0];
-                // Mettre à jour avec les informations du fichier sélectionné
+                // mettre à jour avec les informations du fichier sélectionné
                  photoFacePreview.style.display = "block";
                  photoFacePreview.src = URL.createObjectURL(selectedFile);
                  photoFacePreview.alt = selectedFile.name;

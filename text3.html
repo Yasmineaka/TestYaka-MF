@@ -1,175 +1,216 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /* Styles CSS personnalisés pour la page de tableau de bord */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            background: #F5F5F5;
         }
 
-        /* Styles pour le tableau de bord */
-        a {
+        .navbar {
+            background-color: #65C0FF;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            font-weight: bold;
+            margin: 0 10px;
             text-decoration: none;
-            color: white;
         }
 
-        .tableau-de-bord {
+        .container {
+            max-width: 1200px;
+            margin: 100px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333333;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+
+        .mt-4 {
+            margin-top: 20px;
+        }
+
+        .list-unstyled {
+            list-style: none;
+            padding: 0;
+        }
+
+        .historique-operation {
+            background-color: #fff;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+        }
+
+        .montant {
+            font-size: 18px;
+            font-weight: bold;
+            color: #65C0FF;
+        }
+
+        .date-heure {
+            font-size: 14px;
+            color: #888888;
+        }
+
+        .contact-destinataire {
+            font-size: 14px;
+            color: #5f5f5f;
+        }
+
+        #recharge-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        input[type="number"], input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
             background-color: #65C0FF;
-            color: white;
+            color: #fff;
+            cursor: pointer;
         }
 
-        /* menu */
-
-        .menu li {
-            margin-right: 30px;
-        }
-
-        .menu a {
+        a {
             text-decoration: none;
-            color: white;
+            color: #65C0FF;
+            margin-right: 10px;
         }
 
-        .menu a:hover {
-            text-decoration: underline;
+        #profile-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .logo img {
-            width: 50px;
-        }
-
-        .menu ul {
-            list-style: none;
+        .solde-container {
             display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .boutons button {
+            justify-content: space-between;
+            align-items: center;
             background-color: #65C0FF;
-            color: white;
-            border: 1px solid white;
-            padding: 10px 20px;
-            cursor: pointer;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
         }
 
-        .boutons button:hover {
-            background-color: #65bfff75;
+        .solde {
+            font-size: 36px;
         }
 
-        /* Styles pour le menu burger */
-        .menu-burger-icon {
-            display: none; /* Cache le bouton burger par défaut */
-            flex-direction: column;
-            cursor: pointer;
+        .solde-label {
+            font-size: 18px;
         }
 
-        .bar {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 3px 0;
-        }
-
-        /* Media Query pour les petits écrans */
-        @media (max-width: 768px) {
-            .menu ul {
-                display: none; /* Cache le menu principal par défaut */
-            }
-
-            .menu-burger-icon {
-                display: flex; /* Affiche le bouton burger pour les petits écrans */
-            }
-
-            .menu.active ul {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100px;
-                left: 0;
-                background-color: #65C0FF;
-                width: 100%;
-                padding: 10px;
-                text-align: center;
-                /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); */
-                z-index: 1;
-            }
-
-            .menu.active ul li {
-                margin: 10px 0;
-            }
-        }
-        @media (max-width: 435px) {
-            .boutons button {
-                width: 83px;
-                font-size: 10px;
-            }
-        }
-        @media (max-width: 400px) {
-            .logo{
-                font-size: 12px;
-            }
-            .boutons button {
-               font-size: 9px;
-               height: 30px;
-               width: 78px;
-            }
-        }
-        @media (max-width: 350px) {
-            .logo{
-             margin-left: -15px;
-                font-size: 10px;
-            }
-            .boutons button {
-               font-size: 9px;
-               height: 30px;
-               width: 78px;
-            }
-            .menu-burger-icon{
-                height: 24px;
-                width: 8px;
-                padding: 3px;
-            }
+        #recharge-button {
+            background-color: #65C0FF;
         }
     </style>
+    <title>Tableau de bord</title>
 </head>
 <body>
-    <div class="tableau-de-bord">
-        <div class="logo">
-            <a href=""><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
+    <div class="navbar">
+        <a href="{{ url_for('solde') }}">Gérer le solde</a>
+        <a href="{{ url_for('transfert') }}">Effectuer un transfert</a>
+        <a href="{{ url_for('deconnexion') }}">Se déconnecter</a>
+    </div>
+    <div class="container">
+        <div class="solde-container">
+            <div>
+                <p class="font-weight-bold">Solde actuel :</p>
+                <p class="solde">{{ utilisateur.solde }} F</p>
+            </div>
+            <a href="" id="profile-link">Voir mon profil</a>
         </div>
-
-        <div class="menu">
-            <ul>
-                <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
-                <li><a href="#">Tableau de bord</a></li>
-                <li><a href="#">À Propos</a></li>
-            </ul>
+        <h2 class="mt-4">Historique des opérations</h2>
+        <ul class="list-unstyled">
+            {% for operation in historique_operations %}
+            <div class="historique-operation">
+                <div>
+                    <p class="montant">{{ operation[4] }} F</p>
+                    <p class="date-heure">{{ operation[5] }}</p>
+                </div>
+                <p class="contact-destinataire">Contact destinataire : {{ operation[3] }}</p>
+            </div>
+            {% endfor %}
+        </ul>
+        <div class="text-center mt-4">
+            <button id="recharge-button" class="btn btn-success">Dépot</button>
         </div>
-        <div class="boutons">
-            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
-            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
-        </div>
-        <div class="menu-burger-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div id="recharge-form" class="mt-3">
+            <!-- Formulaire de rechargement -->
+            <form method="post" action="{{ url_for('recharge') }}">
+                <div class="form-group">
+                    <input type="number" name="montant" class="form-control" placeholder="Montant à recharger" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="contact" class="form-control" placeholder="Contact" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Recharger</button>
+            </form>
         </div>
     </div>
-
     <script>
-        const menuBurger = document.querySelector('.menu-burger-icon');
-        const menuIcon = document.querySelector('.menu');
-
-        menuBurger.addEventListener('click', () => {
-            menuIcon.classList.toggle('active');
+        document.getElementById('recharge-button').addEventListener('click', function () {
+            document.getElementById('recharge-form').style.display = 'block';
         });
     </script>
 </body>

@@ -76,14 +76,19 @@ def load_user(user_id):
     if utilisateur_data:
         return Utilisateur(*utilisateur_data)
     return None
-
+# accueil generale
 @app.route('/')
 def accueil():
     return render_template("accueil.html")
+# accueil après inscription
+@app.route('/accueil_inscrip')
+@login_required
+def accueil_inscrip():
+    return render_template("accueil_inscrip.html")
 
 @app.route('/inscription_info')
 def inscription_info():
-    return render_template("inscription_info")
+    return render_template("inscription_info.html")
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -216,5 +221,17 @@ def recharge():
             flash('Rechargement réussi !', 'success')
 
     return redirect('/dashboard')
+
+
+
+
+# -----------------------------------Administrateur----------------------------------
+# @app.route('/admin', methods=['GET', 'POST'])
+# @login_required
+# def admin():
+#     return render_template('admin.html')
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

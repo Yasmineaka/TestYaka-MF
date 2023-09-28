@@ -1,3 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/transfert.css">
+</head>
+<body>
+    <div class="tableau-de-bord">
+        <div class="logo">
+            <a href=""><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="{{ url_for('accueil_inscrip') }}">Accueil</a></li>
+                <li><a href="{{ url_for('dashboard') }}" style="text-decoration: underline;">Tableau de bord</a></li>
+                <li><a href="#">À Propos</a></li>
+            </ul>
+        </div>
+        <!-- <div class="boutons">
+            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
+            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        </div> -->
+        <div class="menu-burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div class="barre-menu">
+        <button class="menu-bouton1"><a href="{{ url_for('solde') }}">Gérer le solde</a></button>
+        <button style=" background: #65bfff75;" class="menu-bouton2"> <a href="{{ url_for('transfert') }}">Effectuer un transfert</a></button>
+        <button class="menu-bouton3"> <a href="{{ url_for('deconnexion') }}">Se déconnecter</a></button>
+    </div>
+    <!------------------Transfert ------------->
+       
+    <div class="container">
+        <h2>Transfert d'argent</h2>
+        <form method="POST">
+            <label for="contact_destinataire">Entrez le contact du destinataire :</label>
+            <input type="tel" name="contact_destinataire" id="contact_destinataire" placeholder="Contact du destinataire" required>
+            <input type="number" name="montant" placeholder="Montant" required>
+            <button type="submit">Transférer</button>
+        </form>        
+        <a href="{{ url_for('dashboard') }}">Retour au tableau de bord</a>
+    </div>
+    <script>
+        // menu en burger responsive
+        const menuBurger = document.querySelector('.menu-burger-icon');
+        const menuIcon = document.querySelector('.menu');
+
+        menuBurger.addEventListener('click', () => {
+            menuIcon.classList.toggle('active');
+        });
+        // formulaire du bouton recharger
+        document.getElementById('recharge-button').addEventListener('click', function () {
+            document.getElementById('recharge-form').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,15 +104,6 @@
     <title>Transfert d'argent</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Transfert d'argent</h1>
-        <form method="POST">
-            <label for="contact_destinataire">Entrez le contact du destinataire :</label>
-            <input type="text" name="contact_destinataire" id="contact_destinataire" placeholder="Contact du destinataire" required>
-            <input type="number" name="montant" placeholder="Montant" required>
-            <button type="submit">Transférer</button>
-        </form>        
-        <a href="{{ url_for('dashboard') }}">Retour au tableau de bord</a>
-    </div>
+   
 </body>
 </html>
