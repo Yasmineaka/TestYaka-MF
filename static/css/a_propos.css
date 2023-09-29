@@ -106,9 +106,7 @@ a {
     flex-wrap: wrap;
     gap: 20px;
 }
-.img_principale{
- 
-}
+
 .image-box {
     flex: 1;
     max-width: calc(50% - 20px); /* Pour deux images par ligne */

@@ -102,31 +102,30 @@ def accueil():
 @login_required
 def accueil_inscrip():
     return render_template("accueil_inscrip.html")
-@app.route('/compte_epargne', methods=['POST','GET'])
+
+
+@app.route('/compte_epargne', methods=['POST', 'GET'])
 @login_required
 def compte_epargne():
     if request.method == 'POST':
         montant_epargne = float(request.form.get('montant_epargne'))
-
         if montant_epargne <= 0:
             flash('Le montant doit être positif.', 'danger')
         elif current_user.solde < montant_epargne:
             flash('Solde insuffisant.', 'danger')
         else:
-            # Soustraire le montant de l'épargne du solde de l'utilisateur
             current_user.solde -= montant_epargne
-
-            # Créer un compte épargne pour l'utilisateur actuel
             cursor.execute('INSERT INTO compte_epargne (utilisateur_id, montant_epargne) VALUES (?, ?)', (current_user.id, montant_epargne))
             conn.commit()
-
-            # Mettre à jour le solde dans la base de données
             cursor.execute('UPDATE utilisateur SET solde = ? WHERE id = ?', (current_user.solde, current_user.id))
             conn.commit()
-
             flash('Compte épargne créé avec succès !', 'success')
+    cursor.execute('SELECT montant_epargne FROM compte_epargne WHERE utilisateur_id = ?', (current_user.id,))
+    comptes_epargne = cursor.fetchall()
 
-    return redirect('/compte_epargne')
+    return render_template('compte_epargne.html', solde=current_user.solde, comptes_epargne=comptes_epargne)
+
+
 
 @app.route('/inscription_info')
 def inscription_info():

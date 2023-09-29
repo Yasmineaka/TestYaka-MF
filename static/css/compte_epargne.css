@@ -1,0 +1,238 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* tableau de bord */
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.tableau-de-bord {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #65C0FF;
+    color: white;
+}
+
+
+.menu li {
+    margin-right: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.boutons button {
+    background-color: #65C0FF;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.boutons button:hover {
+    background-color: #65bfff75;
+}
+
+/* Styles pour le menu burger */
+.menu-burger-icon {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+
+/* barre bouton utilisateurs */
+.barre-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; 
+    background-color: #65bfff75;
+}
+
+.menu-bouton1,
+.menu-bouton2,
+.menu-bouton3,
+.menu-bouton4 {
+    background-color: #65C0FF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    /* border-radius: 0  12px 0 12px; */
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.menu-bouton1{
+    border-radius: 12px 0 0 12px;
+}
+.menu-bouton4 {
+    border-radius:  0 12px 12px 0 ;
+}
+.menu-bouton1:hover,
+.menu-bouton2:hover,
+.menu-bouton3:hover,
+.menu-bouton4:hover{
+    background-color: #65bfff75;
+}
+
+
+
+
+
+.epargne-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.epargne-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.epargne-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.epargne-form button {
+    background-color: #65C0FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.compte-epargne {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+/* Styles pour le formulaire et les comptes épargne */
+.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+background-color: #f5f5f5;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+text-align: center;
+margin-bottom: 20px;
+color: #434242;
+}
+
+.solde {
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+margin-bottom: 20px;
+text-align: center;
+}
+.solde p{
+width: 300px;
+color: #65C0FF;
+border: 1px solid;
+padding: 20px;
+}
+
+.epargne-form {
+background-color: #fff;
+border: 1px solid #ccc;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.epargne-form label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+}
+
+.epargne-form input[type="number"] {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+
+.epargne-form button {
+background-color: #65C0FF;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+cursor: pointer;
+font-size: 16px;
+}
+
+.epargne-form button:hover {
+background-color: #65bfffcb;
+}
+
+.compte-epargne {
+background-color: #fff;
+border: 1px solid #ccc;
+padding: 10px;
+margin-top: 20px;
+border-radius: 5px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.compte-epargne h2 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.compte-epargne ul {
+list-style: none;
+padding: 0;
+}
+
+.compte-epargne ul li {
+margin-bottom: 10px;
+font-size: 16px;
+color: #333;
+}
+

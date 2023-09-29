@@ -26,9 +26,10 @@
         </div>
     </div>
     <div class="barre-menu">
-        <button class="menu-bouton1"><a href="{{ url_for('solde') }}">Gérer le solde</a></button>
-        <button style=" background: #65bfff75;" class="menu-bouton2"> <a href="{{ url_for('transfert') }}">Effectuer un transfert</a></button>
-        <button class="menu-bouton3"> <a href="{{ url_for('deconnexion') }}">Se déconnecter</a></button>
+        <button class="menu-bouton1" style=" background: #65bfff75;"><a href="{{ url_for('dashboard') }}">Gérer le solde</a></button>
+        <button class="menu-bouton2"> <a href="{{ url_for('transfert') }}">Effectuer un transfert</a></button>
+        <button class="menu-bouton3"> <a href="{{ url_for('compte_epargne') }}">Compte epargne</a></button>
+        <button class="menu-bouton4"> <a href="{{ url_for('deconnexion') }}">Se déconnecter</a></button>
     </div>
     <!------------------Solde------------->
        

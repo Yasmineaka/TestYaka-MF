@@ -3,85 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/compte_epargne.css">
     <title>Compte Épargne</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .solde {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .epargne-form {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .epargne-form label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .epargne-form input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .epargne-form button {
-            background-color: #65C0FF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        .compte-epargne {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Compte Épargne</h1>
+<!-- tableau-de-bord -->
+    <div class="tableau-de-bord">
+        <div class="logo">
+            <a href="#"><h2 style="color: rgb(188, 188, 89); -webkit-text-stroke: 0.3px white;">Test<span style="color: white;">Yaka-MF</span></h2></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a style="text-decoration: underline;" href="#">Accueil</a></li>
+                <li><a href="{{ url_for('connexion') }}">Tableau de bord</a></li>
+                <li><a href="{{ url_for('a_propos') }}">À Propos</a></li>
+            </ul>
+        </div>
+        <!-- <div class="boutons">
+            <button><a href="{{ url_for('connexion') }}">Connexion</a></button>
+            <button><a href="{{ url_for('inscription_info') }}">Inscription</a></button>
+        </div> -->
+        <div class="menu-burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div class="barre-menu">
+        <button class="menu-bouton1"> <a href="{{ url_for('dashboard') }}">Gérer le solde</a></button>
+        <button class="menu-bouton2"> <a href="{{ url_for('transfert') }}">Effectuer un transfert</a></button>
+        <button class="menu-bouton3"  style=" background: #65bfff75;"> <a href="{{ url_for('compte_epargne') }}">Compte epargne</a></button>
+        <button class="menu-bouton4"> <a href="{{ url_for('deconnexion') }}">Se déconnecter</a></button>
+    </div>
+
+    <div class="compte-epargne">
+        <h4>Compte Épargne</h4>
         
         <div class="solde">
-            Solde actuel : ${{ solde }} <!-- Utilisation de {{ solde }} pour afficher le solde -->
+            <p>{{ solde }} F</p>
         </div>
         
-        <form method="POST" action="/creer_compte_epargne">
+        <form class="epargne-form button" method="POST" action="/compte_epargne">
             <label for="montant_epargne">Montant à épargner :</label>
             <input type="number" id="montant_epargne" name="montant_epargne" required>
             <button type="submit">Créer le compte épargne</button>
         </form>
        
-
-        <div class="section">
+        <div class="compte-epargne">
             <h2>Comptes Épargne</h2>
             {% if comptes_epargne %}
                 <ul>
                     {% for compte in comptes_epargne %}
-                        <li>Montant épargné : {{ compte.montant_epargne }} $</li>
+                        <li>Montant épargné : {{ compte.montant_epargne }} F</li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>Aucun compte épargne créé pour le moment.</p>
             {% endif %}
         </div>
+    </div>
 </body>
 </html>
